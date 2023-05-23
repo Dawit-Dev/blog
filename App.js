@@ -2,7 +2,7 @@ import React from "react";
 import { NavigationContainer } from "@react-navigation/native";
 
 import IndexScreen from "./src/screens/IndexScreen";
-import { BlogProvider } from "./src/context/BlogContext";
+import { Provider } from "./src/context/BlogContext";
 import AddBlogScreen from "./src/screens/AddBlogScreen";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { Entypo } from "@expo/vector-icons";
@@ -11,7 +11,7 @@ const Stack = createNativeStackNavigator();
 
 const App = () => {
   return (
-    <BlogProvider>
+    <Provider>
       <NavigationContainer>
         <Stack.Navigator>
           <Stack.Screen
@@ -36,7 +36,7 @@ const App = () => {
           />
         </Stack.Navigator>
       </NavigationContainer>
-    </BlogProvider>
+    </Provider>
   );
 };
 
