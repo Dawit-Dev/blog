@@ -1,6 +1,6 @@
 import React from "react";
 import { NavigationContainer } from "@react-navigation/native";
-
+import { Feather } from "@expo/vector-icons";
 import IndexScreen from "./src/screens/IndexScreen";
 import { Provider } from "./src/context/BlogContext";
 // import AddBlogScreen from "./src/screens/CreateScreen";
@@ -36,10 +36,21 @@ const App = () => {
             component={CreateScreen}
             options={{ title: "Add a new blog" }}
           />
+           
           <Stack.Screen
             name="Show"
             component={ShowScreen}
-            options={{ title: "Show Screen" }}
+            options={({ navigation }) => ({
+              title: "Blogs",
+              headerRight: ({ tintColor }) => (
+                <Feather
+                  name="edit"
+                  size={36}
+                  color="tintColor"
+                  onPress={() => navigation.navigate("Edit")}
+                />
+              ),
+            })}
           />
           <Stack.Screen
             name="Create"
