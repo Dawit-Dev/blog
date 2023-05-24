@@ -6,6 +6,7 @@ import { Provider } from "./src/context/BlogContext";
 import AddBlogScreen from "./src/screens/AddBlogScreen";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { Entypo } from "@expo/vector-icons";
+import ShowScreen from "./src/screens/ShowScreen";
 
 const Stack = createNativeStackNavigator();
 
@@ -18,8 +19,8 @@ const App = () => {
             name="Index"
             component={IndexScreen}
             options={({ navigation }) => ({
-              title: 'Blogs',
-              headerRight: ({tintColor}) => (
+              title: "Blogs",
+              headerRight: ({ tintColor }) => (
                 <Entypo
                   name="squared-plus"
                   size={24}
@@ -33,6 +34,11 @@ const App = () => {
             name="Add Blog"
             component={AddBlogScreen}
             options={{ title: "Add a new blog" }}
+          />
+          <Stack.Screen
+            name="Show"
+            component={ShowScreen}
+            options={{ title: "Show Screen" }}
           />
         </Stack.Navigator>
       </NavigationContainer>
