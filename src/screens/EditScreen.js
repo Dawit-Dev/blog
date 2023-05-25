@@ -4,7 +4,7 @@ import { useRoute } from "@react-navigation/native";
 import { Context } from "../context/BlogContext";
 import BlogPostForm from "../components/BlogPostForm";
 
-const EditScreen = () => {
+const EditScreen = ({ navigation }) => {
   const route = useRoute();
   const { id } = route.params;
   const { state, editBlogPost } = useContext(Context);
@@ -15,7 +15,7 @@ const EditScreen = () => {
     <BlogPostForm
       initialValues={{ title: blogPost.title, content: blogPost.content }}
       onSubmit={(title, content) => {
-        editBlogPost(id, title, content)
+        editBlogPost(id, title, content, () => navigation.pop())
       }}
     />
   );

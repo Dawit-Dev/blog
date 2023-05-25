@@ -11,14 +11,26 @@ const ShowScreen = () => {
   const blogPost = state.find((blogPost) => blogPost.id === id);
 
   return (
-    <View>
-      <Text>{blogPost.title}</Text>
-      <Text>{blogPost.content}</Text>
+    <View style={styles.container}>
+      <Text style={styles.text}>{blogPost.title}</Text>
+      <Text style={styles.text}>{blogPost.content}</Text>
     </View>
   );
 };
 
  
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  container: {
+    borderWidth: 3,
+    borderColor: "black",
+    marginBottom: 15,
+    padding: 5,
+    margin: 5,
+    borderRadius: 9,
+  },
+  text: {
+    fontSize: 21,
+  },
+});
 
 export default ShowScreen;
