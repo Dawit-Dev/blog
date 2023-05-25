@@ -3,11 +3,11 @@ import { NavigationContainer } from "@react-navigation/native";
 import { Feather } from "@expo/vector-icons";
 import IndexScreen from "./src/screens/IndexScreen";
 import { Provider } from "./src/context/BlogContext";
-// import AddBlogScreen from "./src/screens/CreateScreen";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { Entypo } from "@expo/vector-icons";
 import ShowScreen from "./src/screens/ShowScreen";
 import CreateScreen from "./src/screens/CreateScreen";
+import EditScreen from "./src/screens/EditScreen";
 
 const Stack = createNativeStackNavigator();
 
@@ -36,18 +36,22 @@ const App = () => {
             component={CreateScreen}
             options={{ title: "Add a new blog" }}
           />
-           
+
           <Stack.Screen
             name="Show"
             component={ShowScreen}
-            options={({ navigation }) => ({
+            options={({ route, navigation }) => ({
               title: "Blogs",
               headerRight: ({ tintColor }) => (
                 <Feather
                   name="edit"
                   size={36}
-                  color="tintColor"
-                  onPress={() => navigation.navigate("Edit")}
+                  color={tintColor}
+                  onPress={() =>
+                    navigation.navigate("Edit", {
+                      id: route.params.id,
+                    })
+                  }
                 />
               ),
             })}
@@ -56,6 +60,11 @@ const App = () => {
             name="Create"
             component={CreateScreen}
             options={{ title: "Create Blog" }}
+          />
+          <Stack.Screen
+            name="Edit"
+            component={EditScreen}
+            options={{ title: "Edit the Blog" }}
           />
         </Stack.Navigator>
       </NavigationContainer>
