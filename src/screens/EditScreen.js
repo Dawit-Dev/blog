@@ -1,17 +1,18 @@
-import React from 'react'
-import { StyleSheet, Text, View } from 'react-native'
+import React, { useContext } from 'react'
+import { StyleSheet } from 'react-native'
 import { useRoute } from "@react-navigation/native";
+import { Context } from '../context/BlogContext';
+import BlogPostForm from '../components/BlogPostForm';
 
 
-const EditScreen = ({ navigation }) => {
+const EditScreen = () => {
     const route = useRoute();
     const { id } = route.params;
+    const { state } = useContext(Context);
 
-  return (
-    <View>
-      <Text>Edit Screen - {id}</Text>
-    </View>
-  )
+    const blogPost = state.find(blogPost => blogPost.id === id);
+
+  return <BlogPostForm />
 }
 
 const styles = StyleSheet.create({})
