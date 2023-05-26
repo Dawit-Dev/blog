@@ -12,9 +12,19 @@ import { Feather } from "@expo/vector-icons";
 
 const IndexScreen = ({ navigation }) => {
   const { state, deleteBlogPost, getBlogPosts } = useContext(Context);
+
   useEffect(() => {
     getBlogPosts();
+
+    const listener = navigation.addListener('didFocus', () => {
+      getBlogPosts();
+    })
+    return () => {
+      listener.remove()
+    }
+
   }, [])
+
   return (
     <View style={styles.container}>
       <FlatList
@@ -47,11 +57,6 @@ const IndexScreen = ({ navigation }) => {
 };
 
 const styles = StyleSheet.create({
-  // container: {
-  //   flex: 1,
-  //   justifyContent: "center",
-  //   alignItems: "center",
-  // },
   text: {
     fontSize: 21,
   },
