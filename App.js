@@ -1,10 +1,10 @@
 import React from "react";
 import { NavigationContainer } from "@react-navigation/native";
-import { Feather } from "@expo/vector-icons";
-import IndexScreen from "./src/screens/IndexScreen";
-import { Provider } from "./src/context/BlogContext";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { Feather } from "@expo/vector-icons";
+import { Provider } from "./src/context/BlogContext";
 import { Entypo } from "@expo/vector-icons";
+import IndexScreen from "./src/screens/IndexScreen";
 import ShowScreen from "./src/screens/ShowScreen";
 import CreateScreen from "./src/screens/CreateScreen";
 import EditScreen from "./src/screens/EditScreen";
